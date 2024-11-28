@@ -1,6 +1,7 @@
 package com.service.wallet_service.application.web.controllers;
 
 import com.service.wallet_service.application.web.dto.request.UserRequestDTO;
+import com.service.wallet_service.application.web.dto.request.UserResponseDTO;
 import com.service.wallet_service.domain.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody UserRequestDTO userRequestDTO) {
-        this.userService.create(userRequestDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<UserResponseDTO> create(@RequestBody UserRequestDTO userRequestDTO) {
+        var createdUSer = this.userService.create(userRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new UserResponseDTO(createdUSer));
     }
 }

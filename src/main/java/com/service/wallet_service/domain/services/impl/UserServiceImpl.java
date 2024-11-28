@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void create(UserRequestDTO userRequestDTO) {
+    public User create(UserRequestDTO userRequestDTO) {
         logger.info("Received request to create new user with cpf=" + userRequestDTO.cpf());
 
         this.userRepository.findByCpf(userRequestDTO.cpf()).ifPresent(user -> {
@@ -39,6 +39,6 @@ public class UserServiceImpl implements UserService {
                 .build();
 
         logger.info("User created");
-        this.userRepository.save(newUser);
+        return this.userRepository.save(newUser);
     }
 }

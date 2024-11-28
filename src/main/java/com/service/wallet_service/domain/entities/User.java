@@ -33,6 +33,30 @@ public class User {
         this.wallets = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public List<Wallet> getWallets() {
+        return wallets;
+    }
+
     @Id
     @BsonId
     @BsonRepresentation(BsonType.OBJECT_ID)
