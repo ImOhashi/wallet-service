@@ -1,4 +1,4 @@
-package com.service.wallet_service.application.web.dto.request;
+package com.service.wallet_service.application.web.dto.response;
 
 import com.service.wallet_service.domain.entities.User;
 import com.service.wallet_service.domain.entities.Wallet;

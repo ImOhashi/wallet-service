@@ -1,7 +1,7 @@
 package com.service.wallet_service.application.web.controllers;
 
 import com.service.wallet_service.application.web.dto.request.UserRequestDTO;
-import com.service.wallet_service.application.web.dto.request.UserResponseDTO;
+import com.service.wallet_service.application.web.dto.response.UserResponseDTO;
 import com.service.wallet_service.domain.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

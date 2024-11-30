@@ -1,10 +1,9 @@
 package com.service.wallet_service.factories;
 
 import com.service.wallet_service.application.web.dto.request.UserRequestDTO;
-import com.service.wallet_service.application.web.dto.request.UserResponseDTO;
+import com.service.wallet_service.application.web.dto.response.UserResponseDTO;
 import com.service.wallet_service.domain.entities.User;
-
-import java.util.List;
+import com.service.wallet_service.domain.entities.Wallet;
 
 public class UserFactory {
     public static User sample() {
@@ -16,6 +15,21 @@ public class UserFactory {
                 .setEmail("teste@teste.com")
                 .setPhone("11912344321")
                 .build();
+    }
+
+    public static User sampleWithWallet() {
+        var user = new User
+                .Builder()
+                .setName("Name")
+                .setSurname("Surname")
+                .setCpf("12345678")
+                .setEmail("teste@teste.com")
+                .setPhone("11912344321")
+                .build();
+
+        user.getWallets().add(new Wallet("teste", "teste", 10.00));
+
+        return user;
     }
 
     public static UserRequestDTO sampleUserRequestDTO() {
