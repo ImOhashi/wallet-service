@@ -13,9 +13,9 @@ public interface WalletService {
 
     Wallet retrieveBalance(String cpf);
 
-    void depositAmount(String cpf, AmountRequestDTO amountRequestDTO);
+    User depositAmount(String cpf, AmountRequestDTO amountRequestDTO);
 
-    void withdrawAmount(String cpf, AmountRequestDTO amountRequestDTO);
+    User withdrawAmount(String cpf, AmountRequestDTO amountRequestDTO);
 
-//    TransferInformation transferFunds(String from, TransferRequestDTO transferRequestDTO);
+    TransferInformation transferFunds(String from, TransferRequestDTO transferRequestDTO);
 }

@@ -1,10 +1,7 @@
 package com.service.wallet_service.application.web.controllers.handler;
 
 import com.service.wallet_service.application.web.controllers.handler.exceptions.ApiErrorMessage;
-import com.service.wallet_service.domain.exceptions.UserAlreadyExistsException;
-import com.service.wallet_service.domain.exceptions.UserNotFoundException;
-import com.service.wallet_service.domain.exceptions.WalletAlreadyExistsException;
-import com.service.wallet_service.domain.exceptions.WalletNotExistsException;
+import com.service.wallet_service.domain.exceptions.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +34,28 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler
     public ResponseEntity<ApiErrorMessage> handleWalletNotExistsException(WalletNotExistsException walletNotExistsException) {
         var apiErrorMessage = new ApiErrorMessage(HttpStatus.NOT_ACCEPTABLE, walletNotExistsException.getMessage());
+        return new ResponseEntity<>(apiErrorMessage, new HttpHeaders(), apiErrorMessage.httpStatus());
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiErrorMessage> handleRuntimeException(RuntimeException runtimeException) {
+        var apiErrorMessage = new ApiErrorMessage(HttpStatus.BAD_REQUEST, runtimeException.getMessage());
+        return new ResponseEntity<>(apiErrorMessage, new HttpHeaders(), apiErrorMessage.httpStatus());
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiErrorMessage> handleInvalidAmountValueException(
+            InvalidAmountValueException invalidAmountValueException
+    ) {
+        var apiErrorMessage = new ApiErrorMessage(HttpStatus.BAD_REQUEST, invalidAmountValueException.getMessage());
+        return new ResponseEntity<>(apiErrorMessage, new HttpHeaders(), apiErrorMessage.httpStatus());
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<ApiErrorMessage> handleSubtractAmountNotIsPossibleException(
+            SubtractAmountNotIsPossibleException subtractAmountNotIsPossibleException
+    ) {
+        var apiErrorMessage = new ApiErrorMessage(HttpStatus.BAD_REQUEST, subtractAmountNotIsPossibleException.getMessage());
         return new ResponseEntity<>(apiErrorMessage, new HttpHeaders(), apiErrorMessage.httpStatus());
     }
 }
